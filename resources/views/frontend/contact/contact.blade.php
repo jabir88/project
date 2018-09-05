@@ -1,7 +1,7 @@
 @extends('frontend.master')
 
 @section('title')
-Category
+Contact
 @endsection
 @section('myContent')
 <!-- banner-2 -->
@@ -12,7 +12,7 @@ Category
 <div class="ads-grid">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Kitchen Products
+			<h3 class="tittle-w3l">Contact
 				<span class="heading-style">
 					<i></i>
 					<i></i>
