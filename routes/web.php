@@ -32,6 +32,7 @@ Route::get('auth/google/callback', 'ApiController@handleProviderCallbackGoogle')
 Route::get('/', 'HomeController@main')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/category', 'HomeController@category')->name('category');
+Route::get('/contact', 'HomeController@contact')->name('contact');
 // Route::get('/myadmin', 'AdminController@dash')->name('');
 
 Route::get('admin', 'AdminController@dash')->name('');

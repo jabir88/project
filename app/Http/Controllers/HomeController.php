@@ -38,4 +38,8 @@ class HomeController extends Controller
     {
         return view('frontend.category.category');
     }
+    public function contact()
+    {
+        return view('frontend.contact.contact');
+    }
 }
