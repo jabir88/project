@@ -182,7 +182,7 @@
                 </ul>
               </li>
               <li class="">
-                <a class="nav-stylehead" href="contact.html">Contact</a>
+                <a class="nav-stylehead" href="{{route('contact')}}">Contact</a>
               </li>
             </ul>
           </div>
