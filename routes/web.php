@@ -21,7 +21,7 @@ Route::get('/admin', 'AdminController@admin')->name('admin');
 // Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/jabir', function () {
-  return "my name is khan";
+    return "my name is khan";
 })->middleware('verified');
 
 

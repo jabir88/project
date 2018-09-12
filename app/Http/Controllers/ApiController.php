@@ -7,60 +7,68 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
 use Socialite;
+use Carbon\Carbon;
 
 class ApiController extends Controller
 {
-  protected $redirectTo = '/admin';
-  public function redirectToProviderGithub()
-  {
-      return Socialite::driver('github')->redirect();
-  }
+    protected $redirectTo = '/admin';
+    public function __construct()
+    {
+        $user = Auth::user();
+    }
+    public function redirectToProviderGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
 
-  public function handleProviderCallbackGithub()
-  {
-      $user = Socialite::driver('github')->user();
+    public function handleProviderCallbackGithub()
+    {
+        $user = Socialite::driver('github')->user();
 
-      // $user->token;
-      print_r("<pre>");
-      print_r($user);
-      print_r("</pre>");
-  }
+        // $user->token;
+        // print_r("<pre>");
+        // print_r($user);
+        // print_r("</pre>");
+    }
 
-  public function redirectToProviderGoogle()
-  {
-      return Socialite::driver('google')->redirect();
-  }
+    public function redirectToProviderGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
 
-  public function handleProviderCallbackGoogle()
-  {
-      $user = Socialite::driver('google')->stateless()->user();
-      $authuser = $this->findOrCreateUser($user,'google');
-      Auth::login($authuser,true);
-      return redirect($this->redirectTo);
+    public function handleProviderCallbackGoogle()
+    {
+        $user = Socialite::driver('google')->stateless()->user();
+        $authuser = $this->findOrCreateUser($user, 'google');
+        Auth::login($authuser, true);
+        return redirect($this->redirectTo);
 //       $token = $user->token;
-      // $id = $user->id;
-      //
-      // return $id;
-
-      // print_r("<pre>");
-      // print_r($user);
-      // print_r("</pre>");
-  }
-public function findOrCreateUser($user)
-{
-  $authuser = User::where('provider_id',$user->id)->first();
-  if ($authuser) {
-    return $authuser;
-  }else {
-    return User::create([
+        // $id = $user->id;
+        //
+        // return $id;
+        //
+        // print_r("<pre>");
+        // print_r($user);
+        // print_r("</pre>");
+    }
+    public function findOrCreateUser($user)
+    {
+        $authuser = User::where('provider_id', $user->id)->first();
+        if ($authuser) {
+            return $authuser;
+        } else {
+            return User::create([
       'name'=>$user->name,
       'email'=>$user->email,
+      'provider_id'=> $user->id,
       'provider'=>'google',
-      'provider_id'=>$user->id,
-    ]);
-  }
-}
-  // public function redirectToProviderFacebook()
+          ]);
+        }
+    }
+
+
+
+    // public function redirectToProviderFacebook()
   // {
   //     return Socialite::driver('facebook')->redirect();
   // }

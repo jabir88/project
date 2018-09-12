@@ -26,15 +26,15 @@ class HomeController extends Controller
         return view('home');
     }
 
-     public function main()
+    public function main()
     {
         return view('frontend.home.home');
     }
-     public function about()
+    public function about()
     {
         return view('frontend.about.about');
     }
-     public function category()
+    public function category()
     {
         return view('frontend.category.category');
     }
