@@ -5,10 +5,10 @@
                 <li class="nav-devider"></li>
                 <li class="nav-label">MAIN NAVIGATION</li>
                 <li> <a href="{{url('admin')}}"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard </span></a></li>
-                @if( Auth::user()->role_id == 1)
+                {{-- @if( Auth::user()->role_id == 1) --}}
                 <li class="nav-devider"></li>
                 <li> <a href="{{url('admin/user')}}"><i class="fa fa-user-circle"></i><span class="hide-menu">Users </span></a></li>
-                @endif
+                {{-- @endif --}}
                 <li class="nav-devider"></li>
                 <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Category</span></a>
                     <ul aria-expanded="false" class="collapse">
