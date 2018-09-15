@@ -25,24 +25,57 @@ Contact
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
-						<form action="#" method="post">
+						@if (session('status'))
+						    <div class="alert alert-success">
+						        {{ session('status') }}
+						    </div>
+						@endif
+						@if (session('failed'))
+						    <div class="alert alert-danger">
+						        {{ session('failed') }}
+						    </div>
+						@endif
+						<form action="{{ route('contact_submit') }}" method="post">
+							@csrf
 							<div class="">
-								<input type="text" name="name" placeholder="Name" required="">
+								<input type="text" name="name" placeholder="Name" value="{{old('name')}}">
+								@if ($errors->has('name'))
+										<span class="invalid-feedback" role="alert">
+												<strong style="color:red">{{ $errors->first('name') }}</strong>
+										</span>
+								@endif
+							</div>
+
+							<div class="">
+								<input class="text" type="text" name="subject" placeholder="Subject" value="{{old('subject')}}">
+								@if ($errors->has('subject'))
+										<span class="invalid-feedback" role="alert">
+												<strong style="color:red">{{ $errors->first('subject') }}</strong>
+										</span>
+								@endif
+							</div>
+
+							<div class="">
+								<input class="email" type="text" name="email" placeholder="Email" value="{{old('email')}}">
+								@if ($errors->has('email'))
+										<span class="invalid-feedback" role="alert">
+												<strong style="color:red">{{ $errors->first('email') }}</strong>
+										</span>
+								@endif
 							</div>
 							<div class="">
-								<input class="text" type="text" name="subject" placeholder="Subject" required="">
-							</div>
-							<div class="">
-								<input class="email" type="email" name="email" placeholder="Email" required="">
-							</div>
-							<div class="">
-								<textarea placeholder="Message" name="message" required=""></textarea>
+								<textarea placeholder="Message" name="message" >{{old('message')}}</textarea>
+								@if ($errors->has('message'))
+										<span class="invalid-feedback" role="alert">
+												<strong style="color:red">{{ $errors->first('message') }}</strong>
+										</span>
+								@endif
 							</div>
 							<input type="submit" value="Submit">
 						</form>
 					</div>
 					<div class="contact-right wthree">
-						
+
 						<div class="col-xs-7 contact-text w3-agileits">
 							<h4>GET IN TOUCH :</h4>
 							<p>

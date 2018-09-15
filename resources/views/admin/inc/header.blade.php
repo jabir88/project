@@ -74,6 +74,7 @@
                             <li>
                                 <div class="drop-title">Notifications</div>
                             </li>
+
                             <li>
                                 <div class="message-center">
                                     <a href="#">
@@ -113,7 +114,7 @@
                     <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
                       <div class="notify"> <span class="heartbit"></span>
                       <div class="mess_my">
-                        4
+                        {{$mess_count}}
                       </div>
 
                         <span class="point"></span> </div>
@@ -121,23 +122,28 @@
                     <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
                         <ul>
                             <li>
-                                <div class="drop-title">You have 4 new messages</div>
+                                <div class="drop-title">You have {{$mess_count}} new messages</div>
                             </li>
                             <li>
                                 <div class="message-center">
+                                  @foreach ($messes as $mess)
 
-                                    <a href="#">
+                                    <a href="{!! route('contact.view',$mess->id) !!}">
                                         <div class="user-img"> <img src="{{asset('admins/')}}/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
-                                            <h5>name </h5> <span class="mail-desc">Descriptiopn  dasda fa</span>  <span class="time">10 timr ,2017</span>
+                                          @php
+                                            $date = $mess->created_at;
+                                          @endphp
+                                            <h5>{{$mess->name}} </h5> <span class="mail-desc">{{$mess->message}}</span>  <span class="time">{{Carbon\Carbon::parse($date)->diffForHumans()}}</span>
                                         </div>
                                     </a>
+                                  @endforeach
 
 
                                 </div>
                             </li>
                             <li>
-                                <a href="{{url('admin/contact/view')}}" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                <a href="{!! route('contact.manage') !!}" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
                             </li>
                         </ul>
                     </div>

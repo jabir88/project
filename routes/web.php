@@ -33,14 +33,25 @@ Route::get('/', 'HomeController@main')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/category', 'HomeController@category')->name('category');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('contact/submit', 'ContactController@insert')->name('contact_submit');
 // Route::get('/myadmin', 'AdminController@dash')->name('');
 
 Route::prefix('admin/')->group(function () {
-    Route::get('', 'AdminController@dash')->name('');
-    Route::get('user', 'UserController@index')->name('user');
-    Route::get('user/view/{id}', 'UserController@view')->name('user_view');
-    Route::get('user/edit/{id}', 'UserController@edit')->name('user_edit');
-    Route::post('user/edit/update', 'UserController@editpostsub')->name('user_update');
-    Route::get('user/delete/{id}', 'UserController@delete')->name('user_delete');
-    Route::get('user/add', 'UserController@add')->name('');
+    Route::get('/', 'AdminController@dash')->name('');
+    Route::prefix('user/')->group(function () {
+        Route::get('/', 'UserController@index')->name('user');
+        Route::get('view/{id}', 'UserController@view')->name('user_view');
+        Route::get('edit/{id}', 'UserController@edit')->name('user_edit');
+        Route::post('edit/update', 'UserController@editpostsub')->name('user_update');
+        Route::get('delete/{id}', 'UserController@delete')->name('user_delete');
+        Route::get('add', 'UserController@add')->name('');
+    });
+    Route::prefix('contact/')->group(function () {
+        Route::prefix('manage/')->group(function () {
+            Route::get('/', 'ContactController@manage')->name('contact.manage');
+            Route::get('view/{id}', 'ContactController@view')->name('contact.view');
+            Route::get('mark/{id}', 'ContactController@mark')->name('contact.mark');
+            Route::get('delete/{id}', 'ContactController@delete')->name('contact.delete');
+        });
+    });
 });

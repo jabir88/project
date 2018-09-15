@@ -36,7 +36,7 @@
                 <li> <a href="#"><i class="fa fa-picture-o"></i><span class="hide-menu">Gallery </span></a></li>
                 @if(Auth::user()->role_id < 3)
                 <li class="nav-devider"></li>
-                <li> <a href="{{url('admin/contact/view')}}"><i class="fa fa-comments"></i><span class="hide-menu">Contact Message </span></a></li>
+                <li> <a href="{!! route('contact.manage') !!}"><i class="fa fa-comments"></i><span class="hide-menu">Contact Message </span></a></li>
                 @endif
                 <li class="nav-devider"></li>
                 <li> <a href="{{url('/')}}" target="_blank"><i class="fa fa-globe"></i><span class="hide-menu">Live Site</span></a></li>
