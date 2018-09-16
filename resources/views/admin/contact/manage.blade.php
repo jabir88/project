@@ -1,6 +1,6 @@
 @extends('layouts.adminmaster')
 @section('bread')
-All Users Information
+All Contact Messages
 @endsection
 @section('myContent')
 

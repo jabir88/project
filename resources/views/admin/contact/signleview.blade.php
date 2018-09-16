@@ -1,6 +1,6 @@
 @extends('layouts.adminmaster')
 @section('bread')
-View User
+View Contact Messages
 @endsection
 @section('myContent')
 <div class="container-fluid">
@@ -10,7 +10,7 @@ View User
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-8 card_header_text">
-                        <i class="fa fa-th"></i> View All Contact Messages
+                        <i class="fa fa-th"></i> View Contact Messages
                     </div>
                     <div class="col-md-4 text-right">
                         <a href="{!! route('contact.manage') !!}" class="btn btn-dark btn-sm card_button"><i class="fa fa-th"></i> All Messages</a>
