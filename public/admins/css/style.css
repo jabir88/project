@@ -4860,7 +4860,7 @@ footer p {
 /*    Input Style
 ------------------------*/
 .form-group {
-  margin-bottom: 20px;
+  margin: 25px 0;
 }
 .form-control {
   height: 42px;

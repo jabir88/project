@@ -54,4 +54,9 @@ Route::prefix('admin/')->group(function () {
             Route::get('delete/{id}', 'ContactController@delete')->name('contact.delete');
         });
     });
+    Route::prefix('category/')->group(function () {
+        Route::get('/', 'CategoryController@index')->name('category.add');
+        Route::post('/submit', 'CategoryController@create')->name('category.add.sumbit');
+        Route::get('manage/', 'CategoryController@manage')->name('category.manage');
+    });
 });

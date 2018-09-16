@@ -7,7 +7,8 @@ Add User
     <div class="row">
       <div class="col-12">
         <div class="card">
-            <form>
+            <form action="" method="post">
+              @csrf
               <div class="card-header">
                   <div class="row">
                       <div class="col-md-8 card_header_text">
