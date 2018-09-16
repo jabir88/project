@@ -1,6 +1,6 @@
 @extends('layouts.adminmaster')
 @section('bread')
-All Users Information
+Add Category
 @endsection
 @section('myContent')
 
@@ -22,6 +22,16 @@ All Users Information
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                @endif
+                @if (session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+                @endif
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-1"></div>
@@ -61,7 +71,7 @@ All Users Information
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <button type="submit" name="button" class="btn btn-info btn-lg">Add Category</button>
+                    <button type="submit" name="button" class="btn btn-info btn-md w-100">Add Category</button>
                     {{-- <a href="#" class="btn btn-info btn-sm">REGISTRATION</a> --}}
                 </div>
              </form>

@@ -55,8 +55,14 @@ Route::prefix('admin/')->group(function () {
         });
     });
     Route::prefix('category/')->group(function () {
-        Route::get('/', 'CategoryController@index')->name('category.add');
+        Route::get('add/', 'CategoryController@index')->name('category.add');
         Route::post('/submit', 'CategoryController@create')->name('category.add.sumbit');
-        Route::get('manage/', 'CategoryController@manage')->name('category.manage');
+        Route::prefix('manage/')->group(function () {
+            Route::get('/', 'CategoryController@manage')->name('category.manage');
+            Route::get('view/{id}', 'CategoryController@view')->name('category.view');
+            Route::get('edit/{id}', 'CategoryController@edit')->name('category.edit');
+            Route::post('edit/submit', 'CategoryController@editsubmit')->name('category.edit.submit');
+            Route::get('delete/{id}', 'CategoryController@delete')->name('category.delete');
+        });
     });
 });

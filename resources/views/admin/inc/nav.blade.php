@@ -13,7 +13,7 @@
                 <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Category</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{!! route('category.add') !!}">Add Category</a></li>
-                        <li><a href="{{url('admin/category/view')}}">Manage Category</a></li>
+                        <li><a href="{!! route('category.manage') !!}">Manage Category</a></li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>
